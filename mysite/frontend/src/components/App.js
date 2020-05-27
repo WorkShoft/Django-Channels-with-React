@@ -74,7 +74,7 @@ class App extends Component {
                                       )}
                                            
 
-	    <input id="chat-message-input" type="text" class="input-field" size="100" /><br />
+	    <textarea id="chat-message-input" type="text" cols="100" /><br />
 	    <input id="chat-message-submit" type="button" class="button" value="Send" />
 	    
             </div>

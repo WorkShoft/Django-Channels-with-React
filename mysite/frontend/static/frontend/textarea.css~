@@ -1,0 +1,3 @@
+#chat-message-input {
+    resize: none;
+    height: 80px;

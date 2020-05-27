@@ -1,33 +1,19 @@
-<!DOCTYPE html>
-<html>
-    <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<!-- FOUNDATION -->
-	<script
-	    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-	    integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
-	    crossorigin="anonymous"></script>
-	
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
-	
-	<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
-	<!-- END FOUNDATION -->
+{% extends 'frontend/base.html' %}
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js" integrity="sha256-5oApc/wMda1ntIEK4qoWJ4YItnV4fBHMwywunj8gPqc=" crossorigin="anonymous"></script>
-	
-	<title>Django REST with React</title>
-    </head>
-    <body>
-	<div id="app" class="grid-x cell large-8 align-center">
-	    <!-- React will load here -->
-	</div>
+{% block body %}
 
-    </body>
-    {% load static %}
+<body>
+    <div id="app" class="grid-x cell large-8 align-center">
+	<!-- React will load here -->
+    </div>
+
+
+
+{% load static %}
     <script src="{% static "frontend/main.js" %}"></script>
     <script>
      $(document).foundation();
     </script>
-</html>
+</body>
+
+{% endblock %}
