@@ -16,6 +16,7 @@
 
  document.querySelector('#room-name-submit').onclick = function(e) {
      var roomName = document.querySelector('#room-name-input').value;
+     roomName = roomName.replace(/ /g, '_');
      window.location.pathname = roomName + '/';
  };
 </script>

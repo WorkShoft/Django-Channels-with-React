@@ -34,7 +34,9 @@ class App extends Component {
         
         chatSocket.onmessage = (e) => {
             var data = JSON.parse(e.data);
-            var message = {text: data.message, timestamp: moment().format("MM ddd, YYYY hh:mm:ss a")};
+            var message = {text: data.message, date: data.utc_time};
+	    message.date = moment(message.date).local().format('YYYY-MM-DD HH:mm:ss')
+	    
             let updated_messages = [...this.state.messages];
             updated_messages.push(message);
             this.setState({messages: updated_messages});
@@ -68,7 +70,7 @@ class App extends Component {
                   return <div key={i} id="message" className="card">
 
                            <div className="cell large-4">{item.text}</div>
-                           <div className="cell large-2 text-right"><small>{item.timestamp}</small></div>
+                           <div className="cell large-2 text-right"><small>{item.date}</small></div>
                          </div>
                   ;}
                                       )}
