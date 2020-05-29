@@ -7,21 +7,12 @@ class App extends Component {
 	super(props);
 	this.state = {
 	    messages: [],
-	    loaded: false,
-	    placeholder: "Loading"
 	};
-
-        this.clickSubmitMessage = this.clickSubmitMessage(this);
     }
 
-    clickSubmitMessage(e){
-        if (e.keyCode === 13) {  // enter, return
-            document.querySelector('#chat-message-submit').click();
-        }
-    }
-
+    
     componentDidMount(){
-        const roomName = location.pathname.substr(1); //JSON.parse(document.getElementById('room-name').textContent);
+        const roomName = location.pathname.substr(1);
 
         var socketPath = 'ws://'
             + window.location.host
@@ -35,23 +26,23 @@ class App extends Component {
         chatSocket.onmessage = (e) => {
             var data = JSON.parse(e.data);
             var message = {text: data.message, date: data.utc_time};
-	    message.date = moment(message.date).local().format('YYYY-MM-DD HH:mm:ss')
+	    message.date = moment(message.date).local().format('YYYY-MM-DD HH:mm:ss');
 	    
             let updated_messages = [...this.state.messages];
             updated_messages.push(message);
             this.setState({messages: updated_messages});
         };
 
-	chatSocket.onclose = function(e) {
+	chatSocket.onclose = (e) => {
 	    console.error('Chat socket closed unexpectedly');
 	};
 
 	document.querySelector('#chat-message-input').focus();
-	document.querySelector('#chat-message-input').onkeyup = function(e) {
-	    {this.clickSubmitMessage}
+	document.querySelector('#chat-message-input').onkeyup = (e) => {
+	    this.clickSubmitMessage
 	};
 
-	document.querySelector('#chat-message-submit').onclick = function(e) {
+	document.querySelector('#chat-message-submit').onclick = (e) => {
             var messageInputDom = document.querySelector('#chat-message-input');
             var message = messageInputDom.value;
 
@@ -77,7 +68,7 @@ class App extends Component {
                                            
 
 	    <textarea id="chat-message-input" type="text" cols="100" /><br />
-	    <input id="chat-message-submit" type="button" class="button" value="Send" />
+	    <input id="chat-message-submit" type="button" className="button" value="Send" />
 	    
             </div>
 	);

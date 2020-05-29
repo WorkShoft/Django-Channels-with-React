@@ -64,4 +64,3 @@ class ChatConsumer(WebsocketConsumer):
             'message': message,
             'utc_time': utc_time,
         }))
- 
