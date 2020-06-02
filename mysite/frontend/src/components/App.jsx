@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { Message } from './Message';
 
 
 class App extends Component {
@@ -21,7 +22,6 @@ class App extends Component {
     const chatSocket = new WebSocket(
       socketPath,
     );
-
 
     chatSocket.onmessage = (e) => {
       const data = JSON.parse(e.data);
@@ -45,9 +45,11 @@ class App extends Component {
   }
 
   render() {
+    const { messages } = this.state;
+
     return (
       <div>
-        {this.state.messages.map((item) => (
+        {messages.map((item) => (
           <div key={item.id} id="message" className="card">
             <div className="cell large-4">
               {item.text}
