@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { Message } from './Message';
+import MessageInput from './MessageInput';
+import Message from './Message';
 
 
 class App extends Component {
   constructor(props) {
     super(props);
+   
     this.state = {
       messages: [],
     };
@@ -31,7 +33,7 @@ class App extends Component {
       this.setState((prevState) => ({ messages: prevState.messages.concat(message) }));
     };
 
-    document.querySelector('#chat-message-input').focus();
+    //document.querySelector('#chat-message-input').focus();
 
     document.querySelector('#chat-message-submit').onclick = () => {
       const messageInputDom = document.querySelector('#chat-message-input');
@@ -47,20 +49,21 @@ class App extends Component {
   render() {
     const { messages } = this.state;
 
-    return (
+    const messageInput = <MessageInput />;
+    const messageList = (
       <div>
         {messages.map((item) => (
-          <div key={item.id} id="message" className="card">
-            <div className="cell large-4">
-              {item.text}
-            </div>
-            <div className="cell large-2 text-right"><small>{item.date}</small></div>
+          <div key={item.id}>
+            <Message key={item.id} text={item.text} date={item.date} />
           </div>
         ))}
-        <textarea id="chat-message-input" type="text" cols="100" />
-        <br />
-        <input id="chat-message-submit" type="button" className="button" value="Send" />
+      </div>
+    );
 
+    return (
+      <div>
+        {messageList}
+        {messageInput}
       </div>
     );
   }
