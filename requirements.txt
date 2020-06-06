@@ -18,7 +18,7 @@ cryptography==2.9.2
 daphne==2.5.0
 distlib==0.3.0
 distro==1.4.0
-Django==3.0.6
+Django==3.0.7
 djangorestframework==3.11.0
 hiredis==1.0.1
 html5lib==1.0.1
@@ -69,7 +69,7 @@ cryptography==2.9.2
 daphne==2.5.0
 distlib==0.3.0
 distro==1.4.0
-Django==3.0.6
+Django==3.0.7
 djangorestframework==3.11.0
 hiredis==1.0.1
 html5lib==1.0.1
